@@ -6,17 +6,18 @@
 
 <script>
 import Breeze from './components/Breeze'
-import Tabs from './components/Tabs'
-import More from './components/More'
 import Post from './components/Post'
+import Toasted from 'vue-toasted'
+import {Tabs, Tab} from 'vue-tabs-component'
 
 export default {
   name: 'app',
   components: {
     Breeze,
+    Post,
+    Toasted,
     Tabs,
-    More,
-    Post
+    Tab
   }
 }
 </script>
