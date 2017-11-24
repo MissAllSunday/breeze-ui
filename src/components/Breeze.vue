@@ -3,16 +3,20 @@
     <div class="breeze_user_statusbox">
       <form @submit.prevent="validateForm('add_status', 'confirm_add_status')"  data-vv-scope="add_status" id="add_status">
         <textarea name="message" id="message" rel="atwhoMention" v-model="form.message"></textarea>
-        <input type="submit" value="{{lang.post}}" name="statusSubmit" class="button_submit" id="statusSubmit"/>
+        <button type="submit" name="statusSubmit" class="button_submit" id="statusSubmit" >{{lang.post}}</button>
       </form>
     </div>
+    <ul v-for="(single, index) in status">
+      <li class="windowbg stripes breezeStatus" :id="'status_id_' + single.id">
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Breeze',
-  props: ['status','comments', 'users', 'smf_url', 'lang', 'statusOwner', 'session_var', 'session_id'],
+  props: ['status', 'users', 'smf_url', 'lang', 'statusOwner', 'session_var', 'session_id'],
   data () {
     return {
       status: this.status,

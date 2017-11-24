@@ -1,4 +1,11 @@
-<template>
+<template
+  :status="{}"
+  :users="{}"
+  :smf_url="'some string here'"
+  :lang="{}"
+  :statusOwner="1"
+  :session_var="''"
+  :session_id="''">
   <div id="app">
     <Breeze/>
   </div>
@@ -9,6 +16,7 @@ import Breeze from './components/Breeze'
 import Post from './components/Post'
 import Toasted from 'vue-toasted'
 import {Tabs, Tab} from 'vue-tabs-component'
+import VeeValidate from 'vee-validate';
 
 export default {
   name: 'app',
@@ -17,7 +25,8 @@ export default {
     Post,
     Toasted,
     Tabs,
-    Tab
+    Tab,
+    VeeValidate
   }
 }
 </script>
