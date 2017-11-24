@@ -22,10 +22,13 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Breeze',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      status: this.status,
+      comments: this.comments,
+      users: this.users,
+      form: []
     }
   }
 }

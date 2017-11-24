@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <Breeze/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Breeze from './components/Breeze'
+import Tabs from './components/Tabs'
+import More from './components/More'
+import Post from './components/Post'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Breeze,
+    Tabs,
+    More,
+    Post
   }
 }
 </script>
