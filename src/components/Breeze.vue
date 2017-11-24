@@ -35,29 +35,10 @@ export default {
   data () {
     return {
       status: this.status,
-      comments: this.comments,
       users: this.users,
-      form: []
     }
   },
     methods:{
-      confirm_add: function(scope) {
-        var self = this;
-
-        swal({
-          title: self.lang[scope + '_confirm_title'],
-          text: self.lang[scope + '_confirm_text'],
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonText: self.lang[scope + '_confirm_yes'],
-          cancelButtonText: self.lang[scope + '_confirm_no'],
-        }).then(function () {
-          self.add();
-        }).catch(swal.noop);
-      },
-      add: function () {
-        // Lots and lots of ajax here
-      },
       confirm_obliterate: function(scope, id) {
         var self = this;
 
@@ -74,20 +55,7 @@ export default {
       },
       obliterate: function (scope, id) {
         // Lots and lots of ajax here
-      },
-      validateForm: function(scope) {
-        var self = this;
-
-        this.$validator.validateAll(scope).then(() => {
-          this.confirm_add(scope);
-        }).catch(() => {
-          swal({
-            type: 'warning',
-            title: self.lang.warning,
-            text: self.lang.check_errors
-          });
-      });
-      },
+      }
     }
 }
 </script>
