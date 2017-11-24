@@ -1,15 +1,30 @@
 <template>
   <div class="inside information">
     <div class="breeze_user_statusbox">
-      <form @submit.prevent="validateForm('add_status', 'confirm_add_status')"  data-vv-scope="add_status" id="add_status">
+      <form @submit.prevent="validateForm('add_status')"  data-vv-scope="add_status" id="add_status">
         <textarea name="message" id="message" rel="atwhoMention" v-model="form.message"></textarea>
         <button type="submit" name="statusSubmit" class="button_submit" id="statusSubmit" >{{lang.post}}</button>
       </form>
     </div>
-    <ul v-for="(single, index) in status">
-      <li class="windowbg stripes breezeStatus" :id="'status_id_' + single.id">
-      </li>
-    </ul>
+    <div v-for="(single, index) in data.status">
+      <div class="windowbg stripes breezeStatus" :id="'status_id_' + single.id">
+        <div class="user_avatar">
+          {{data.users[single.user_id].avatar}}<br />
+        </div>
+        <div class="status">
+          <div class="post">
+            {{single.body}}
+          </div>
+          <div class="options">
+            <!--Likes-->
+            <!--Time-->
+            <!--Delete-->
+          </div>
+          <hr />
+          <Comment :comments="single.comments"/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,45 +38,56 @@ export default {
       comments: this.comments,
       users: this.users,
       form: []
-
     }
   },
     methods:{
-        validateForm: function(scope, funcion) {
-            var self = this;
+      confirm_add: function(scope) {
+        var self = this;
 
-            this.$validator.validateAll(scope).then(() => {
-                if(funcion == 'confirm_save_cuenta') {
-                    this.confirm_save_cuenta();
-                } else if (funcion == 'confirm_update_cuenta') {
-                    this.confirm_update_cuenta();
-                }
-            }).catch(() => {
-                swal({
-                    type: 'warning',
-                    title: self.lang.warning,
-                    text: self.lang.check_errors
-                });
-            });
-        },
+        swal({
+          title: self.lang[scope + '_confirm_title'],
+          text: self.lang[scope + '_confirm_text'],
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonText: self.lang[scope + '_confirm_yes'],
+          cancelButtonText: self.lang[scope + '_confirm_no'],
+        }).then(function () {
+          self.add();
+        }).catch(swal.noop);
+      },
+      add: function () {
+        // Lots and lots of ajax here
+      },
+      confirm_obliterate: function(scope, id) {
+        var self = this;
+
+        swal({
+          title: self.lang[scope + '_confirm_title'],
+          text: self.lang[scope + '_confirm_text'],
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonText: self.lang.confirm_yes,
+          cancelButtonText: self.lang.confirm_no,
+        }).then(function () {
+            self.obliterate(scope, id);
+        }).catch(swal.noop);
+      },
+      obliterate: function (scope, id) {
+        // Lots and lots of ajax here
+      },
+      validateForm: function(scope) {
+        var self = this;
+
+        this.$validator.validateAll(scope).then(() => {
+          this.confirm_add(scope);
+        }).catch(() => {
+          swal({
+            type: 'warning',
+            title: self.lang.warning,
+            text: self.lang.check_errors
+          });
+      });
+      },
     }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

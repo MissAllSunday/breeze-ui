@@ -13,20 +13,24 @@
 
 <script>
 import Breeze from './components/Breeze'
+import Comment from './components/Comment'
 import Post from './components/Post'
 import Toasted from 'vue-toasted'
 import {Tabs, Tab} from 'vue-tabs-component'
-import VeeValidate from 'vee-validate';
+import VeeValidate from 'vee-validate'
+import swal from 'sweetalert2'
 
 export default {
   name: 'app',
   components: {
     Breeze,
+    Comment,
     Post,
     Toasted,
     Tabs,
     Tab,
-    VeeValidate
+    VeeValidate,
+    swal
   }
 }
 </script>
