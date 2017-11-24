@@ -1,36 +1,46 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div class="inside information">
+    <div class="breeze_user_statusbox">
+      <form @submit.prevent="validateForm('add_status', 'confirm_add_status')"  data-vv-scope="add_status" id="add_status">
+        <textarea name="message" id="message" rel="atwhoMention" v-model="form.message"></textarea>
+        <input type="submit" value="{{lang.post}}" name="statusSubmit" class="button_submit" id="statusSubmit"/>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Breeze',
+  props: ['status','comments', 'users', 'smf_url', 'lang', 'statusOwner', 'session_var', 'session_id'],
   data () {
     return {
       status: this.status,
       comments: this.comments,
       users: this.users,
       form: []
+
     }
-  }
+  },
+    methods:{
+        validateForm: function(scope, funcion) {
+            var self = this;
+
+            this.$validator.validateAll(scope).then(() => {
+                if(funcion == 'confirm_save_cuenta') {
+                    this.confirm_save_cuenta();
+                } else if (funcion == 'confirm_update_cuenta') {
+                    this.confirm_update_cuenta();
+                }
+            }).catch(() => {
+                swal({
+                    type: 'warning',
+                    title: self.lang.warning,
+                    text: self.lang.check_errors
+                });
+            });
+        },
+    }
 }
 </script>
 
