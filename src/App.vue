@@ -1,13 +1,8 @@
-<template
-  :status="{}"
-  :users="{}"
-  :smf_url="'some string here'"
-  :lang="{}"
-  :statusOwner="1"
-  :session_var="''"
-  :session_id="''">
+<template>
   <div id="app">
-    <Breeze/>
+    <Breeze
+      :users='{"1":{"user_id":1,"name":"Test","avatar":"lol"},"2":{"user_id":2,"name":"Test ","avatar":"qwerty"}}'
+      :status='[{"id":"1","body":"test","user_id":1,"time":1511823584},{"id":"1","body":"another test","user":2,"time":1511823584}]'/>
   </div>
 </template>
 

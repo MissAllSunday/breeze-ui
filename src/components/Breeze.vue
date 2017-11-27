@@ -31,31 +31,33 @@
 <script>
 export default {
   name: 'Breeze',
-  props: ['status', 'users', 'smf_url', 'lang', 'statusOwner', 'session_var', 'session_id'],
-  data () {
+  props: ['status', 'users'],
+  data: function() {
     return {
-      status: this.status,
-      users: this.users,
-    }
-  },
-    methods:{
-      confirm_obliterate: function(scope, id) {
-        var self = this;
-
-        swal({
-          title: self.lang[scope + '_confirm_title'],
-          text: self.lang[scope + '_confirm_text'],
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonText: self.lang.confirm_yes,
-          cancelButtonText: self.lang.confirm_no,
-        }).then(function () {
-            self.obliterate(scope, id);
-        }).catch(swal.noop);
-      },
-      obliterate: function (scope, id) {
-        // Lots and lots of ajax here
+      data: {
+        status: this.status,
+        users: this.users
       }
     }
+  },
+  methods:{
+    confirm_obliterate: function(scope, id) {
+      var self = this;
+
+      swal({
+        title: self.lang[scope + '_confirm_title'],
+        text: self.lang[scope + '_confirm_text'],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: self.lang.confirm_yes,
+        cancelButtonText: self.lang.confirm_no,
+      }).then(function () {
+          self.obliterate(scope, id);
+      }).catch(swal.noop);
+    },
+    obliterate: function (scope, id) {
+      // Lots and lots of ajax here
+    }
+  }
 }
 </script>
