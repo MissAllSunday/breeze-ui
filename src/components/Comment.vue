@@ -1,10 +1,9 @@
 <template>
     <div class="inside information">
         <div class="breeze_user_statusbox">
-            <form @submit.prevent="validateForm(scope)"  data-vv-scope="add_status" id="add_status">
-                <textarea name="message" id="message" rel="atwhoMention" v-model="form.message"></textarea>
-                <button type="submit" name="statusSubmit" class="button_submit" id="statusSubmit" >{{lang.post}}</button>
-            </form>
+            <Post
+              :scope="'add_comment'"
+              :lang="lang"/>
         </div>
         <div v-for="(comment, index) in data.comments">
             <div class="windowbg stripes breezeStatus" :id="'status_id_' + comment.id">
@@ -28,12 +27,19 @@
 </template>
 
 <script>
+import Post from './Post'
+
 export default {
   name: 'Comment',
-  props: ['comments', 'users', 'smf_url', 'lang', 'statusOwner', 'session_var', 'session_id'],
+  components: {
+    Post,
+  },
+  props: ['comments', 'lang'],
   data () {
     return {
-      comments: this.comments
+      data: {
+          comments: this.comments
+      }
     }
   },
   methods: {

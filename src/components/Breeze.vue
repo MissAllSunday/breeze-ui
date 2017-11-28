@@ -20,7 +20,9 @@
             <a href="#" v-on:click="confirm_obliterate(single.id)">delete</a>
           </div>
           <hr />
-          <Comment :comments="single.comments"/>
+          <Comment
+            :comments="single.comments"
+            :lang="lang" />
         </div>
       </div>
     </div>
