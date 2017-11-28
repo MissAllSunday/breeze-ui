@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import Comment from './Child/Comment'
-import Post from './Child/Post'
+import Comment from './Comment'
+import Post from './Post'
 
 export default {
   name: 'Breeze',
