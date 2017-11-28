@@ -2,14 +2,13 @@
   <div id="app">
     <Breeze
       :users='{"1":{"user_id":1,"name":"Test","avatar":"lol"},"2":{"user_id":2,"name":"Test ","avatar":"qwerty"}}'
-      :status='[{"id":"1","body":"test","user_id":1,"time":1511823584},{"id":"1","body":"another test","user":2,"time":1511823584}]'/>
+      :status='[{"id":"1","body":"test","user_id":1,"time":1511823584},{"id":"2","body":"another test","user":2,"time":1511823584}]'
+      :lang='{"delete_confirm_text":"confirmar","delete_confirm_title":"titulo confirmar","confirm_yes":"yes","confirm_no":"no"}'/>
   </div>
 </template>
 
 <script>
 import Breeze from './components/Breeze'
-import Comment from './components/Comment'
-import Post from './components/Post'
 import Toasted from 'vue-toasted'
 import {Tabs, Tab} from 'vue-tabs-component'
 import VeeValidate from 'vee-validate'
@@ -19,8 +18,6 @@ export default {
   name: 'app',
   components: {
     Breeze,
-    Comment,
-    Post,
     Toasted,
     Tabs,
     Tab,

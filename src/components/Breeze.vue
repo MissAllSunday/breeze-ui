@@ -1,15 +1,14 @@
 <template>
   <div class="inside information">
     <div class="breeze_user_statusbox">
-      <form @submit.prevent="validateForm('add_status')"  data-vv-scope="add_status" id="add_status">
-        <textarea name="message" id="message" rel="atwhoMention" v-model="form.message"></textarea>
-        <button type="submit" name="statusSubmit" class="button_submit" id="statusSubmit" >{{lang.post}}</button>
-      </form>
+      <Post
+      :scope="'add_status'"
+      :lang="lang"/>
     </div>
     <div v-for="(single, index) in data.status">
       <div class="windowbg stripes breezeStatus" :id="'status_id_' + single.id">
         <div class="user_avatar">
-          {{data.users[single.user_id].avatar}}<br />
+          something<br />
         </div>
         <div class="status">
           <div class="post">
@@ -18,7 +17,7 @@
           <div class="options">
             <!--Likes-->
             <!--Time-->
-            <!--Delete-->
+            <a href="#" v-on:click="confirm_obliterate(single.id)">delete</a>
           </div>
           <hr />
           <Comment :comments="single.comments"/>
@@ -29,9 +28,16 @@
 </template>
 
 <script>
+import Comment from './Child/Comment'
+import Post from './Child/Post'
+
 export default {
   name: 'Breeze',
-  props: ['status', 'users'],
+  components: {
+    Comment,
+    Post,
+  },
+  props: ['status', 'users', 'lang'],
   data: function() {
     return {
       data: {
@@ -41,12 +47,12 @@ export default {
     }
   },
   methods:{
-    confirm_obliterate: function(scope, id) {
+    confirm_obliterate: function(id) {
       var self = this;
 
       swal({
-        title: self.lang[scope + '_confirm_title'],
-        text: self.lang[scope + '_confirm_text'],
+        title: self.lang.delete_confirm_title,
+        text: self.lang.delete_confirm_text,
         type: "warning",
         showCancelButton: true,
         confirmButtonText: self.lang.confirm_yes,

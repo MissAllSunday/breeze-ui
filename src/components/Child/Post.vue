@@ -8,10 +8,9 @@
 <script>
 export default {
   name: 'Post',
-  props: ['scope', 'smf_url', 'lang', 'statusOwner', 'session_var', 'session_id'],
+  props: ['scope','lang'],
   data () {
     return {
-      comments: this.comments,
       form: []
     }
   }
