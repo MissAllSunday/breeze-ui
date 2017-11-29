@@ -52,7 +52,7 @@ export default {
     confirm_obliterate: function(id) {
       var self = this;
 
-      swal({
+      self.$swal({
         title: self.lang.delete_confirm_title,
         text: self.lang.delete_confirm_text,
         type: "warning",
@@ -61,7 +61,7 @@ export default {
         cancelButtonText: self.lang.confirm_no,
       }).then(function () {
           self.obliterate(scope, id);
-      }).catch(swal.noop);
+      }).catch(self.$swal.noop);
     },
     obliterate: function (scope, id) {
       // Lots and lots of ajax here

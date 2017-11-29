@@ -22,7 +22,6 @@ export default {
     Tabs,
     Tab,
     VeeValidate,
-    swal
   }
 }
 </script>
