@@ -25,7 +25,7 @@ export default {
               this.confirm_update_cuenta();
           }
       }).catch(() => {
-          swal({
+          self.$swal({
               type: 'warning',
               title: 'Advertencia',
               text: 'Por favor corrija los errores del formulario'
