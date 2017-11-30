@@ -64,7 +64,6 @@ export default {
       }).catch(self.$swal.noop);
     },
     obliterate: function (scope, id) {
-      // Lots and lots of ajax here
     }
   }
 }

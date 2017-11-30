@@ -11,8 +11,6 @@
 import Breeze from './components/Breeze'
 import Toasted from 'vue-toasted'
 import {Tabs, Tab} from 'vue-tabs-component'
-import VeeValidate from 'vee-validate'
-import swal from 'sweetalert2'
 
 export default {
   name: 'app',
@@ -20,8 +18,7 @@ export default {
     Breeze,
     Toasted,
     Tabs,
-    Tab,
-    VeeValidate,
+    Tab
   }
 }
 </script>

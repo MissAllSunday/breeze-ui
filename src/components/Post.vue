@@ -15,9 +15,23 @@ export default {
     }
   },
   methods: {
-      validateForm: function () {
-          return true;
-      }
+    validateForm: function () {
+        var self = this;
+
+      this.$validator.validateAll(self.scope).then(() => {
+          if(funcion == 'confirm_save_cuenta') {
+              this.confirm_save_cuenta();
+          } else if (funcion == 'confirm_update_cuenta') {
+              this.confirm_update_cuenta();
+          }
+      }).catch(() => {
+          swal({
+              type: 'warning',
+              title: 'Advertencia',
+              text: 'Por favor corrija los errores del formulario'
+          });
+      });
+    }
   }
 }
 </script>

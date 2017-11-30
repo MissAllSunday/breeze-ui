@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import VueSweetalert2 from 'vue-sweetalert2';
+import VeeValidate from 'vee-validate';
 
+Vue.use(VeeValidate);
 Vue.use(VueSweetalert2);
 Vue.config.productionTip = false
 

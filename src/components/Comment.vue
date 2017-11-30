@@ -17,7 +17,7 @@
                     <div class="options">
                         <!--Likes-->
                         <!--Time-->
-                        <!--Delete-->
+                        <a href="#" v-on:click="confirm_obliterate(single.id)">delete</a>
                     </div>
                     <hr />
                 </div>
@@ -43,6 +43,20 @@ export default {
     }
   },
   methods: {
+    confirm_obliterate: function(id) {
+      var self = this;
+
+      self.$swal({
+          title: self.lang.delete_confirm_title,
+          text: self.lang.delete_confirm_text,
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonText: self.lang.confirm_yes,
+          cancelButtonText: self.lang.confirm_no,
+      }).then(function () {
+          self.obliterate(scope, id);
+      }).catch(self.$swal.noop);
+    },
   }
 }
 </script>
